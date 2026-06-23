@@ -12,5 +12,5 @@ export function useIntersection(options?: IntersectionObserverInit) {
     return () => observer.disconnect()
   }, [])
 
-  return { ref, isIntersecting }
+  return { ref, isIntersecting, visible: isIntersecting }
 }
