@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+:root {
+  --dark: #0C0E14;
+  --card: #111827;
+  --green: #10B981;
+  --green-hover: #059669;
+  --orange: #F97316;
+  --muted: #9CA3AF;
+  --light: #D1D5DB;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--dark);
+  color: var(--light);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes ctaPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
+  50%       { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
+}
+
+.anim-fade-up  { animation: fadeUp 0.7s ease both; }
+.anim-fade-in  { animation: fadeIn 0.7s ease both; }
+.anim-slide-left { animation: slideLeft 0.9s ease both; }
+.cta-pulse { animation: ctaPulse 2.5s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-fade-up, .anim-fade-in, .anim-slide-left { animation: none; opacity: 1; }
+  .cta-pulse { animation: none; }
+}

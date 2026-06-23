@@ -1,0 +1,407 @@
+/* 
+ * DESIGN SYSTEM — Modernismo Construtivista Brasileiro Digital
+ * Paleta: Fundo escuro (#0C0E14), Laranja (#F97316), Azul Elétrico (#3B82F6), Verde (#10B981)
+ * Tipografia: Syne (display) + DM Sans (corpo)
+ * Filosofia: Geometria forte, contraste radical, resultados em destaque
+ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.5rem;
+  /* Dark theme as default */
+  --background: oklch(0.095 0.01 265);
+  --foreground: oklch(0.97 0.005 65);
+  --card: oklch(0.13 0.01 265);
+  --card-foreground: oklch(0.97 0.005 65);
+  --popover: oklch(0.13 0.01 265);
+  --popover-foreground: oklch(0.97 0.005 65);
+  --primary: oklch(0.65 0.22 35); /* Orange #F97316 */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.18 0.01 265);
+  --secondary-foreground: oklch(0.85 0.005 65);
+  --muted: oklch(0.18 0.01 265);
+  --muted-foreground: oklch(0.62 0.015 265);
+  --accent: oklch(0.55 0.22 255); /* Blue #3B82F6 */
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.65 0.22 35);
+  --chart-1: oklch(0.65 0.22 35);
+  --chart-2: oklch(0.55 0.22 255);
+  --chart-3: oklch(0.6 0.2 160);
+  --chart-4: oklch(0.7 0.18 300);
+  --chart-5: oklch(0.75 0.15 80);
+  --sidebar: oklch(0.13 0.01 265);
+  --sidebar-foreground: oklch(0.97 0.005 65);
+  --sidebar-primary: oklch(0.65 0.22 35);
+  --sidebar-primary-foreground: oklch(0.99 0 0);
+  --sidebar-accent: oklch(0.18 0.01 265);
+  --sidebar-accent-foreground: oklch(0.97 0.005 65);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.65 0.22 35);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  a[href],
+  select:not(:disabled) {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  /* ========== ANIMAÇÕES DE MOVIMENTO E VIDA ========== */
+  @keyframes slideInUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(60px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -1000px 0;
+    }
+    100% {
+      background-position: 1000px 0;
+    }
+  }
+
+  @keyframes rotate-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes counter-pop {
+    0% {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-up {
+    animation: slideInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animate-slide-down {
+    animation: slideInDown 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animate-slide-left {
+    animation: slideInLeft 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animate-slide-right {
+    animation: slideInRight 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .animate-fade-scale {
+    animation: fadeInScale 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .shimmer-bg {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  .rotate-animation {
+    animation: rotate-slow 20s linear infinite;
+  }
+
+  .counter-pop {
+    animation: counter-pop 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .cta-pulse {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* ========== FIM ANIMAÇÕES ========== */
+
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+
+  /* Custom utility classes */
+  .text-orange {
+    color: #F97316;
+  }
+  .text-blue-electric {
+    color: #3B82F6;
+  }
+  .text-green-metric {
+    color: #10B981;
+  }
+  .bg-dark-primary {
+    background-color: #0C0E14;
+  }
+  .bg-dark-secondary {
+    background-color: #111827;
+  }
+  .bg-dark-card {
+    background-color: #1a1f2e;
+  }
+  .border-orange {
+    border-color: #F97316;
+  }
+  .gradient-orange {
+    background: linear-gradient(135deg, #F97316, #EA580C);
+  }
+  .gradient-blue {
+    background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+  }
+  .gradient-hero {
+    background: linear-gradient(135deg, #0C0E14 0%, #111827 50%, #0C0E14 100%);
+  }
+  .orange-glow {
+    box-shadow: 0 0 30px rgba(249, 115, 22, 0.3);
+  }
+  .blue-glow {
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.3);
+  }
+  .section-divider {
+    background: linear-gradient(90deg, transparent, #F97316, transparent);
+    height: 1px;
+    width: 100%;
+  }
+
+  /* Animate on scroll */
+  .animate-fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.5s cubic-bezier(0.23, 1, 0.32, 1), transform 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .animate-fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Pulse CTA */
+  @keyframes pulse-orange {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.4); }
+    50% { box-shadow: 0 0 0 12px rgba(249, 115, 22, 0); }
+  }
+  .cta-pulse {
+    animation: pulse-orange 3s ease-in-out infinite;
+  }
+
+  /* Floating WhatsApp */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+  }
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Counter animation */
+  .counter-value {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Diagonal accent line */
+  .accent-line::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 100%;
+    background: #F97316;
+    margin-right: 12px;
+    border-radius: 2px;
+  }
+
+  /* Card hover effect */
+  .service-card {
+    transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(249, 115, 22, 0.1);
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0C0E14;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #F97316;
+    border-radius: 3px;
+  }
+}
